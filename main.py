@@ -23,6 +23,7 @@ IMGS_PATH = 'goose'
 
 # player = pygame.Surface((20, 20))
 #player.fill(WHITE)
+
 player_imgs = [pygame.image.load(IMGS_PATH + '/' + file).convert_alpha() for file in listdir(IMGS_PATH)]
 player = player_imgs [0]
 player_rect = player.get_rect()
@@ -135,16 +136,16 @@ while is_working:
             scores += 1
 
     if pressed_keys[K_DOWN] and not ball_rect.bottom >= height:
-        ball_rect = ball_rect.move(0, ball_speed)
+        ball_rect = ball_rect.move(0, player_speed)
 
     if pressed_keys[K_UP] and not ball_rect.top >= height:
-        ball_rect = ball_rect.move(0, -ball_speed)
+        ball_rect = ball_rect.move(0, -player_speed)
         
     if pressed_keys[K_RIGHT] and not ball_rect.left >= width:
-        ball_rect = ball_rect.move(ball_speed, 0)
+        ball_rect = ball_rect.move(player_speed, 0)
         
     if pressed_keys[K_LEFT] and not ball_rect.right >= width:
-        ball_rect = ball_rect.move(-ball_speed, 0)
+        ball_rect = ball_rect.move(-player_speed, 0)
 
     enemy_rect = enemy_rect.move(-enemy_speed, 0)
 
