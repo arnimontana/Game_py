@@ -33,7 +33,7 @@ def create_enemy():
     #enemy = pygame.Surface((20, 20))
     #enemy.fill(RED)
     
-    enemy = pygame.image.load ('enemy.png').convert_alpha()
+    enemy = pygame.image.load('enemy.png').convert_alpha()
         
     enemy_rect = pygame.Rect(width, random.randint(0, height), *enemy.get_size())
     enemy_speed = random.randint(2, 5)
