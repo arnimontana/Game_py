@@ -1,3 +1,4 @@
+from os import listdir
 import pygame
 import random
 from pygame.constants import QUIT, K_DOWN, K_UP, K_RIGHT, K_LEFT
@@ -28,7 +29,7 @@ player_rect = player.get_rect()
 player_speed = 10
 
 #ball_rect = ball.get_rect()
-#ball_speed = [1, 1]
+ball_speed = [1, 1]
 
 def create_enemy():
     enemy = pygame.Surface((20, 20))
@@ -130,10 +131,10 @@ while is_working:
             bonuses.pop(bonuses.index(bonus))
             scores += 1
 
-    if pressed_keys[K_DOWN] and not ball_rect.bottom >= heigth:
+    if pressed_keys[K_DOWN] and not ball_rect.bottom >= height:
         ball_rect = ball_rect.move(0, ball_speed)
 
-    if pressed_keys[K_UP] and not ball_rect.top >= heigth:
+    if pressed_keys[K_UP] and not ball_rect.top >= height:
         ball_rect = ball_rect.move(0, -ball_speed)
         
     if pressed_keys[K_RIGHT] and not ball_rect.left >= width:
