@@ -93,7 +93,7 @@ while is_working:
             player = player_imgs[img_index]
             
         
-        pressed_keys = pygame.key.get_pressed()
+    pressed_keys = pygame.key.get_pressed()
 
     main_surface.fill(BLACK)
 
