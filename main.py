@@ -1,7 +1,7 @@
 from os import listdir
 import pygame
 import random
-from pygame.constants import QUIT, K_DOWN, K_UP, K_RIGHT, K_LEFT
+from pygame.constants import QUIT, K_DOWN, K_UP, K_LEFT, K_RIGHT 
 
 pygame.init()
 
@@ -93,11 +93,13 @@ while is_working:
             player = player_imgs[img_index]
             
         
-        pressed_keys = pygame.event.get_pressed()
+        pressed_keys = pygame.key.get_pressed()
 
-    #main_surface.fill(BLACK)
+    main_surface.fill(BLACK)
 
-    #main_surface.blit(bg, (0, 0))
+    main_surface.blit(ball, ball_rect)
+
+    # main_surface.blit(bg, (0, 0))
 
     bgX -= bg_speed
     bgX2 -= bg_speed
@@ -108,15 +110,13 @@ while is_working:
     if bgX2 < -bg.get_width():
         bgX2 = bg.get_width()
 
-    #main_surface.blit(ball, ball_rect)
-
-    main_surface.blit(font.render(str(scores), True, WHITE), (width - 30, 0))
+    # main_surface.blit(font.render(str(scores), True, WHITE), (width - 30, 0))
     
-    main_surface.blit(font.render(str(scores), True, WHITE), width - 30, 0)
+    main_surface.blit(font.render(str(scores), True, WHITE), (width - 30, 0))
 
     for enemy in enemies:
         enemy[1] = enemy[1].move(-enemy[2],0)
-        main_surface.blit(enemy[0], enemy_rect[1])
+        main_surface.blit(enemy[0], enemy[1])
 
         if enemy[1].left < 0:
             enemies.pop(enemies.index(enemy))
@@ -146,7 +146,5 @@ while is_working:
         
     if pressed_keys[K_LEFT] and not ball_rect.right >= width:
         ball_rect = ball_rect.move(-player_speed, 0)
-
-    enemy_rect = enemy_rect.move(-enemy_speed, 0)
 
 pygame.display.flip()
